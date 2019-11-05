@@ -1,2 +1,6 @@
-When i=4294967297, the program is computing the square i*i as 8589934593, which is not accurate. We are using the largest integer type possible here (unsigned long long i;). Due to overflow data loss, i*i is reduced to 8589934593 since it it the largest part of it that can fit in as an " unsigned long long " and it happens to end in two odd digits. In binary notation, i=4294967297=100000000000000000000000000000001=2^32+1. So, its square should be i*i=(2^32+1)*(2^32+1)=2^64+2^33+1=100000000000000000000000000000001000000000000000000000000000000001. The largest "unsigned long long" integer is 2^63-1. Therefore, the "2^64" part of i*i is overflow, leaving just 1000000000000000000000000000000001=8589934593.
+When i=4294967297, the program is computing the square i*i as 8589934593, which is not accurate. 
+We are using the largest integer type possible here (unsigned long long i;). 
+Due to overflow data loss, i*i is reduced to 8589934593 since it it the largest part of it that can fit in as an " unsigned long long " and it happens to end in two odd digits. 
+In binary notation, i=4294967297=100000000000000000000000000000001=2^32+1. So, its square should be i*i=(2^32+1)*(2^32+1)=2^64+2^33+1=100000000000000000000000000000001000000000000000000000000000000001. 
+The largest "unsigned long long" integer is 2^63-1. Therefore, the "2^64" part of i*i is overflow, leaving just 1000000000000000000000000000000001=8589934593.
 In fact, there is no solution to this problem
